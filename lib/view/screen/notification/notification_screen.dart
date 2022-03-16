@@ -62,13 +62,13 @@ class NotificationScreen extends StatelessWidget {
                                       .letter
                                       .orderId;
 
-                                  final split1 = oid.split(',');
-
-                                  final split2 = split1[0].split(':');
-
-                                  print("mssgg");
-                                  print(split2[1]);
-                                  oid = split2[1].trim();
+                                  // final split1 = oid.split(',');
+                                  //
+                                  // final split2 = split1[0].split(':');
+                                  //
+                                  // print("mssgg");
+                                  // print(split2[1]);
+                                  // oid = split2[1].trim();
 
                                   print("oid: " + oid);
                                   getOrderModel(oid, nid, context);
@@ -142,7 +142,7 @@ class NotificationScreen extends StatelessWidget {
           await dioClient.get(AppConstants.NOTIFICATION_URI + "/$nid/unread");
       print("read ");
       print(response1.data.toString());
-
+      Provider.of<NotificationProvider>(context, listen: false).getCounts();
       Navigator.push(
           context,
           MaterialPageRoute(
