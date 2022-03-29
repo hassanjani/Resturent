@@ -1,63 +1,34 @@
 {
   "project_info": {
-    "project_number": "405639606211",
-    "firebase_url": "https://min-330411-default-rtdb.firebaseio.com",
-    "project_id": "min-330411",
-    "storage_bucket": "min-330411.appspot.com"
+    "project_number": "845674230800",
+    "firebase_url": "https://handlay100mints-default-rtdb.firebaseio.com",
+    "project_id": "handlay100mints",
+    "storage_bucket": "handlay100mints.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:405639606211:android:1fca98fe51fc05d4ff9776",
-        "android_client_info": {
-          "package_name": "com.khyberCoded.stackit_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAeYhjlINcssmhS9UpcGwKbwGYQ2I79FnE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:405639606211:android:cc21c208e61bc3f2ff9776",
+        "mobilesdk_app_id": "1:845674230800:android:a40fbbd65fa16ff1e0c695",
         "android_client_info": {
           "package_name": "com.khybercoded.hundredmints.resturent"
         }
       },
       "oauth_client": [
         {
-          "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
+          "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAeYhjlINcssmhS9UpcGwKbwGYQ2I79FnE"
+          "current_key": "AIzaSyAeKYrAf6UJPQjidYdMqWzf3XBVsQU1J3M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
+              "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -66,27 +37,56 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:405639606211:android:7f8307fe19e67e1aff9776",
+        "mobilesdk_app_id": "1:845674230800:android:d18dd57b81c45647e0c695",
         "android_client_info": {
-          "package_name": "com.khybercoded.hundredminute_customer.user_app"
+          "package_name": "com.khybercoded.hundredminute_seller.seller_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
+          "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAeYhjlINcssmhS9UpcGwKbwGYQ2I79FnE"
+          "current_key": "AIzaSyAeKYrAf6UJPQjidYdMqWzf3XBVsQU1J3M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "405639606211-3k1a3apjr1rfcf60dfnfdkpfvrnj3fi7.apps.googleusercontent.com",
+              "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845674230800:android:25e3bcbe59cfca55e0c695",
+        "android_client_info": {
+          "package_name": "com.kybercoded.hundredmints_storeApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeKYrAf6UJPQjidYdMqWzf3XBVsQU1J3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845674230800-5g8rjdh228mu8ruu7lklsft5f8dcb7lj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

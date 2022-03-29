@@ -6,6 +6,7 @@ import 'package:user_app/data/model/response/base/api_response.dart';
 import 'package:user_app/data/model/response/base/error_response.dart';
 import 'package:user_app/data/model/response/response_model.dart';
 import 'package:user_app/data/repository/auth_repo.dart';
+import 'package:user_app/notification/PushNotifications.dart';
 
 class AuthProvider with ChangeNotifier {
   final AuthRepo authRepo;
@@ -77,6 +78,9 @@ class AuthProvider with ChangeNotifier {
       Map map = apiResponse.response.data;
       String token = map["token"];
       authRepo.saveUserToken(token);
+      FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+      PushNotificationService(firebaseMessaging).updateDeviceToken();
+
       // await authRepo.updateToken();
       callback(true, token);
       notifyListeners();

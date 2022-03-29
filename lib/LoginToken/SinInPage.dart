@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:user_app/LoginToken/SignUpPage.dart';
 import 'package:user_app/LoginToken/authAPI.dart';
@@ -129,6 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                         validate = true;
                         circular = false;
                       });
+
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

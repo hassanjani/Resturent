@@ -1,7 +1,9 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_app/helper/network_info.dart';
 import 'package:user_app/localization/language_constrants.dart';
+import 'package:user_app/notification/PushNotifications.dart';
 import 'package:user_app/provider/localization_provider.dart';
 import 'package:user_app/provider/notification_provider.dart';
 import 'package:user_app/utill/images.dart';
@@ -29,6 +31,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
     super.initState();
+    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+    PushNotificationService(firebaseMessaging).initialise();
+
     Provider.of<NotificationProvider>(context, listen: false).getCounts();
     _screens = [
       HomePage(),
