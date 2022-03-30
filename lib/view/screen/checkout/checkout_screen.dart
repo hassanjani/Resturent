@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:user_app/data/model/body/order_place_model.dart';
 import 'package:user_app/data/model/response/cart_model.dart';
-
 import 'package:user_app/helper/price_converter.dart';
 import 'package:user_app/localization/language_constrants.dart';
 import 'package:user_app/provider/cart_provider.dart';
@@ -25,7 +25,6 @@ import 'package:user_app/view/screen/checkout/widget/custom_check_box.dart';
 import 'package:user_app/view/screen/checkout/widget/shipping_method_bottom_sheet.dart';
 import 'package:user_app/view/screen/dashboard/dashboard_screen.dart';
 import 'package:user_app/view/screen/payment/payment_screen.dart';
-import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final List<CartModel> cartList;
@@ -108,6 +107,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       ? Builder(
                           builder: (context) => TextButton(
                             onPressed: () async {
+                              Provider.of<OrderProvider>(context, listen: false)
+                                  .setAddressIndex(1);
+                              Provider.of<OrderProvider>(context, listen: false)
+                                  .setSelectedShippingAddress(1);
+
                               if (Provider.of<OrderProvider>(context,
                                           listen: false)
                                       .addressIndex ==
@@ -117,16 +121,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         content:
                                             Text('Select a shipping address'),
                                         backgroundColor: Colors.red));
-                              } else if (Provider.of<OrderProvider>(context,
-                                          listen: false)
-                                      .shippingIndex ==
-                                  null) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content:
-                                            Text('Select a shipping method'),
-                                        backgroundColor: Colors.red));
-                              } else {
+                              }
+                              // else if (Provider.of<OrderProvider>(context,
+                              //             listen: false)
+                              //         .shippingIndex ==
+                              //     null) {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //       SnackBar(
+                              //           content:
+                              //               Text('Select a shipping method'),
+                              //           backgroundColor: Colors.red));
+                              // }
+                              else {
                                 List<Cart> carts = [];
                                 for (int index = 0;
                                     index < widget.cartList.length;
@@ -249,40 +255,40 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(getTranslated('SHIPPING_TO', context),
-                                  style: titilliumRegular),
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      Provider.of<OrderProvider>(context)
-                                                  .addressIndex ==
-                                              null
-                                          ? getTranslated(
-                                              'add_your_address', context)
-                                          : Provider.of<ProfileProvider>(
-                                                  context,
-                                                  listen: false)
-                                              .addressList[
-                                                  Provider.of<OrderProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .addressIndex]
-                                              .address,
-                                      style: titilliumRegular.copyWith(
-                                          fontSize: Dimensions.FONT_SIZE_SMALL),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    SizedBox(
-                                        width: Dimensions
-                                            .PADDING_SIZE_EXTRA_SMALL),
-                                    Image.asset(Images.EDIT_TWO,
-                                        width: 15,
-                                        height: 15,
-                                        color:
-                                            ColorResources.getPrimary(context)),
-                                  ]),
+                              // Text(getTranslated('SHIPPING_TO', context),
+                              //     style: titilliumRegular),
+                              // Row(
+                              //     mainAxisAlignment: MainAxisAlignment.end,
+                              //     children: [
+                              //       Text(
+                              //         Provider.of<OrderProvider>(context)
+                              //                     .addressIndex ==
+                              //                 null
+                              //             ? getTranslated(
+                              //                 'add_your_address', context)
+                              //             : Provider.of<ProfileProvider>(
+                              //                     context,
+                              //                     listen: false)
+                              //                 .addressList[
+                              //                     Provider.of<OrderProvider>(
+                              //                             context,
+                              //                             listen: false)
+                              //                         .addressIndex]
+                              //                 .address,
+                              //         style: titilliumRegular.copyWith(
+                              //             fontSize: Dimensions.FONT_SIZE_SMALL),
+                              //         maxLines: 1,
+                              //         overflow: TextOverflow.ellipsis,
+                              //       ),
+                              //       SizedBox(
+                              //           width: Dimensions
+                              //               .PADDING_SIZE_EXTRA_SMALL),
+                              //       Image.asset(Images.EDIT_TWO,
+                              //           width: 15,
+                              //           height: 15,
+                              //           color:
+                              //               ColorResources.getPrimary(context)),
+                              //     ]),
                             ]),
                       ),
                       Padding(
@@ -301,40 +307,40 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(getTranslated('SHIPPING_PARTNER', context),
-                                  style: titilliumRegular),
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      Provider.of<OrderProvider>(context)
-                                                  .shippingIndex ==
-                                              null
-                                          ? getTranslated(
-                                              'select_shipping_method', context)
-                                          : Provider.of<OrderProvider>(context,
-                                                  listen: false)
-                                              .shippingList[
-                                                  Provider.of<OrderProvider>(
-                                                          context,
-                                                          listen: false)
-                                                      .shippingIndex]
-                                              .title,
-                                      style: titilliumSemiBold.copyWith(
-                                          color: ColorResources.getPrimary(
-                                              context)),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    SizedBox(
-                                        width: Dimensions
-                                            .PADDING_SIZE_EXTRA_SMALL),
-                                    Image.asset(Images.EDIT_TWO,
-                                        width: 15,
-                                        height: 15,
-                                        color:
-                                            ColorResources.getPrimary(context)),
-                                  ]),
+                              // Text(getTranslated('SHIPPING_PARTNER', context),
+                              //     style: titilliumRegular),
+                              // Row(
+                              //     mainAxisAlignment: MainAxisAlignment.end,
+                              //     children: [
+                              //       Text(
+                              //         Provider.of<OrderProvider>(context)
+                              //                     .shippingIndex ==
+                              //                 null
+                              //             ? getTranslated(
+                              //                 'select_shipping_method', context)
+                              //             : Provider.of<OrderProvider>(context,
+                              //                     listen: false)
+                              //                 .shippingList[
+                              //                     Provider.of<OrderProvider>(
+                              //                             context,
+                              //                             listen: false)
+                              //                         .shippingIndex]
+                              //                 .title,
+                              //         style: titilliumSemiBold.copyWith(
+                              //             color: ColorResources.getPrimary(
+                              //                 context)),
+                              //         maxLines: 1,
+                              //         overflow: TextOverflow.ellipsis,
+                              //       ),
+                              //       SizedBox(
+                              //           width: Dimensions
+                              //               .PADDING_SIZE_EXTRA_SMALL),
+                              //       Image.asset(Images.EDIT_TWO,
+                              //           width: 15,
+                              //           height: 15,
+                              //           color:
+                              //               ColorResources.getPrimary(context)),
+                              //     ]),
                             ]),
                       ),
                     ]),

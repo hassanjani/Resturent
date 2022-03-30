@@ -48,12 +48,12 @@ class PushNotificationService {
 
     // onMessage: When the app is open and it receives a push notification
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("onMessage data: ${message.data}");
+      print("notification onMessage data: ${message.data}");
     });
 
     // replacement for onResume: When the app is in the background and opened directly from the push notification.
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('onMessageOpenedApp data: ${message.data}');
+      print('notification onMessageOpenedApp data: ${message.data}');
       // _serialiseAndNavigate(message);
     });
   }

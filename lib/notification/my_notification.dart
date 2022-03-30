@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:user_app/view/screen/order/order_details_screen.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:user_app/main.dart';
 import 'package:user_app/utill/app_constants.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:user_app/view/screen/order/order_details_screen.dart';
 
 class MyNotification {
   static Future<void> initialize(
@@ -31,12 +31,12 @@ class MyNotification {
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("onMessage: ${message.data}");
+      print("notification onMessage: ${message.data}");
       MyNotification.showNotification(
           message.data, flutterLocalNotificationsPlugin);
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("onMessageApp: ${message.data}");
+      print("notification onMessageApp: ${message.data}");
     });
   }
 
@@ -151,7 +151,7 @@ class MyNotification {
 }
 
 Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
-  print('background: ${message.data}');
+  print('notification background: ${message.data}');
   var androidInitialize =
       new AndroidInitializationSettings('notification_icon');
   var iOSInitialize = new IOSInitializationSettings();
