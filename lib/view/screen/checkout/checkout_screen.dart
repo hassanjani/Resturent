@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_app/data/model/body/order_place_model.dart';
 import 'package:user_app/data/model/response/cart_model.dart';
+import 'package:user_app/helper/Message.dart';
 import 'package:user_app/helper/price_converter.dart';
 import 'package:user_app/localization/language_constrants.dart';
 import 'package:user_app/provider/cart_provider.dart';
@@ -9,6 +10,7 @@ import 'package:user_app/provider/coupon_provider.dart';
 import 'package:user_app/provider/order_provider.dart';
 import 'package:user_app/provider/product_provider.dart';
 import 'package:user_app/provider/profile_provider.dart';
+import 'package:user_app/provider/seller_provider.dart';
 import 'package:user_app/provider/splash_provider.dart';
 import 'package:user_app/utill/color_resources.dart';
 import 'package:user_app/utill/custom_themes.dart';
@@ -43,8 +45,24 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   double _discount = 0;
   double _tax = 0;
 
+  Future sendNotification(var token, String Messege) async {
+    final response = await Messaging.sendTo(
+      title: "Checkout Screen",
+      body: " $Messege",
+      // click_action: 'FLUTTER_NOTIFICATION_CLICK',
+      click_action: '3',
+      userid: "userId",
+      userpic: '',
+      id: '',
+      fcmToken: token,
+    );
+  }
+
   @override
   void initState() {
+    // sendNotification(
+    //     "elVRDOhAQCOy-ZyrVhuGJl:APA91bFP8_3A2amEwDmy68btpYZl-qZLV4z_AiMhMeiZyoo1CP7fckVXRW4AAVS4gknDeU-gvlmcT_GckSOrp3A2Qhv-leYA5UVeCFD2AEEQd6INk6WIXPUDxBCEp60F0vyr_Xip_L8K",
+    //     "sent from Restaurant");
     super.initState();
     Provider.of<ProfileProvider>(context, listen: false)
         .initAddressList(context);
@@ -614,12 +632,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (_) => DashBoardScreen()),
             (route) => false);
+
+        String sellername = Provider.of<SellerProvider>(context, listen: false)
+            .sellerModel
+            .fName;
+        print("seller: $sellername");
         showAnimatedDialog(
             context,
             MyDialog(
               icon: Icons.check,
               title: getTranslated('order_placed', context),
-              description: getTranslated('your_order_placed', context),
+              description:
+                  getTranslated('your_order_placed', context) + " $sellername",
               isFailed: false,
             ),
             dismissible: false,
